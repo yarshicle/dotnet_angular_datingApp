@@ -12,7 +12,7 @@ img {
 	display: inline;
 }
 
-.navbar {
+.navbar.loggedIn {
 	padding-top:10px;
 	padding-bottom:10px;
 }

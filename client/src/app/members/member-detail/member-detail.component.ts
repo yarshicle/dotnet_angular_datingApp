@@ -1,5 +1,5 @@
 import { MembersService } from './../../_services/members.service';
-import { Member } from './../../models/member';
+import { Member } from '../../_models/member';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';

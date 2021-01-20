@@ -1,12 +1,12 @@
-import { Photo } from './../../models/photo';
+import { Photo } from '../../_models/photo';
 import { MembersService } from './../../_services/members.service';
 
 import { AccountService } from './../../_services/account.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
-import { Member } from 'src/app/models/member';
+import { Member } from 'src/app/_models/member';
 import { take } from 'rxjs/operators';
-import { User } from 'src/app/models/user';
+import { User } from 'src/app/_models/user';
 import { environment } from 'src/environments/environment';
 
 @Component({
