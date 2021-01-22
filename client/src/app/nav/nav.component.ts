@@ -1,3 +1,4 @@
+import { MembersService } from './../_services/members.service';
 import { AccountService } from './../_services/account.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
