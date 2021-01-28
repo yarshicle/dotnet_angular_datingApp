@@ -4,27 +4,26 @@ import { Message } from './../../_models/message';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-member-messages',
-  templateUrl: './member-messages.component.html',
-  styleUrls: ['./member-messages.component.css']
+	selector: 'app-member-messages',
+	templateUrl: './member-messages.component.html',
+	styleUrls: ['./member-messages.component.css']
 })
 export class MemberMessagesComponent implements OnInit {
 	@Input() messages: Message[];
 	@Input() username: string;
 	@ViewChild('messageForm') messageForm: NgForm;
 	messageContent: string;
-	
-  constructor(private messageService: MessageService) { }
 
-  ngOnInit(): void {
-		
-	}
-	
-	sendMessage() {
-		this.messageService.sendMessage(this.username, this.messageContent).subscribe(message => {
-			this.messages.push(message);
-			this.messageForm.reset();
-		})
-	}
+	constructor(private messageService: MessageService) {}
 
+	ngOnInit(): void {}
+
+	sendMessage(): void {
+		this.messageService
+			.sendMessage(this.username, this.messageContent)
+			.subscribe((message) => {
+				this.messages.push(message);
+				this.messageForm.reset();
+			});
+	}
 }

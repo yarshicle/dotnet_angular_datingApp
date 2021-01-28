@@ -13,8 +13,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { TimeagoModule } from 'ngx-timeago';
 
 @NgModule({
-  declarations: [],
-  imports: [
+	declarations: [],
+	imports: [
 		CommonModule,
 		BsDropdownModule.forRoot(),
 		ToastrModule.forRoot({
@@ -43,4 +43,4 @@ import { TimeagoModule } from 'ngx-timeago';
 		ModalModule
 	]
 })
-export class SharedModule { }
+export class SharedModule {}

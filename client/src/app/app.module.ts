@@ -32,46 +32,45 @@ import { UserManagementComponent } from './admin/user-management/user-management
 import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
 import { RolesModalComponent } from './modals/roles-modal/roles-modal.component';
 
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavComponent,
-    HomeComponent,
-    RegisterComponent,
-    MemberListComponent,
-    MemberDetailComponent,
-    ListsComponent,
-    MessagesComponent,
-    TestErrorsComponent,
-    NotFoundComponent,
-    ServerErrorComponent,
-    MemberCardComponent,
-    MemberEditComponent,
-    PhotoEditorComponent,
-    TextInputComponent,
-    DateInputComponent,
-    MemberMessagesComponent,
-    AdminPanelComponent,
-    HasRoleDirective,
-    UserManagementComponent,
-    PhotoManagementComponent,
-    RolesModalComponent
-  ],
-  imports: [
-    BrowserModule,
+	declarations: [
+		AppComponent,
+		NavComponent,
+		HomeComponent,
+		RegisterComponent,
+		MemberListComponent,
+		MemberDetailComponent,
+		ListsComponent,
+		MessagesComponent,
+		TestErrorsComponent,
+		NotFoundComponent,
+		ServerErrorComponent,
+		MemberCardComponent,
+		MemberEditComponent,
+		PhotoEditorComponent,
+		TextInputComponent,
+		DateInputComponent,
+		MemberMessagesComponent,
+		AdminPanelComponent,
+		HasRoleDirective,
+		UserManagementComponent,
+		PhotoManagementComponent,
+		RolesModalComponent
+	],
+	imports: [
+		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
 		BrowserAnimationsModule,
 		FormsModule,
 		ReactiveFormsModule,
 		SharedModule
-  ],
-  providers: [
-		{provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-		{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-		{provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
+	],
+	providers: [
+		{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+		{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+		{ provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
 	],
 	bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

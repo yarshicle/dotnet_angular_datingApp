@@ -2,11 +2,12 @@ import { MessageService } from './../_services/message.service';
 import { Component, OnInit } from '@angular/core';
 import { Message } from '../_models/message';
 import { Pagination } from '../_models/pagination';
+import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 
 @Component({
-  selector: 'app-messages',
-  templateUrl: './messages.component.html',
-  styleUrls: ['./messages.component.css']
+	selector: 'app-messages',
+	templateUrl: './messages.component.html',
+	styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent implements OnInit {
 	messages: Message[] = [];
@@ -16,30 +17,34 @@ export class MessagesComponent implements OnInit {
 	pageSize = 5;
 	loading = false;
 
-  constructor(private messageService: MessageService) { }
+	constructor(private messageService: MessageService) {}
 
-  ngOnInit(): void {
+	ngOnInit(): void {
 		this.loadMessages();
 	}
-	
-	loadMessages() {
+
+	loadMessages(): void {
 		this.loading = true;
-		this.messageService.getMessages(this.pageNumber, this.pageSize, this.container).subscribe(response => {
-			this.messages = response.result;
-			this.pagination = response.pagination;
-			this.loading = false;
-		})
+		this.messageService
+			.getMessages(this.pageNumber, this.pageSize, this.container)
+			.subscribe((response) => {
+				this.messages = response.result;
+				this.pagination = response.pagination;
+				this.loading = false;
+			});
 	}
 
-	pageChanged(event: any) {
+	pageChanged(event: PageChangedEvent): void {
 		this.pageNumber = event.page;
 		this.loadMessages();
 	}
 
-	deleteMessage(id: number) {
+	deleteMessage(id: number): void {
 		this.messageService.deleteMessage(id).subscribe(() => {
-			this.messages.splice(this.messages.findIndex(m => m.id === id), 1);
-		})
+			this.messages.splice(
+				this.messages.findIndex((m) => m.id === id),
+				1
+			);
+		});
 	}
-
 }
