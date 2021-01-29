@@ -1,3 +1,4 @@
+import { PresenceService } from './_services/presence.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from './_models/user';
 import { AccountService } from './_services/account.service';
@@ -12,7 +13,10 @@ export class AppComponent implements OnInit {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	users: any;
 
-	constructor(private accountService: AccountService) {}
+	constructor(
+		private accountService: AccountService,
+		private presence: PresenceService
+	) {}
 
 	ngOnInit(): void {
 		this.setCurrentUser();
@@ -20,6 +24,10 @@ export class AppComponent implements OnInit {
 
 	setCurrentUser(): void {
 		const user: User = JSON.parse(localStorage.getItem('user'));
-		this.accountService.setCurrentUser(user);
+
+		if (user) {
+			this.accountService.setCurrentUser(user);
+			this.presence.createHubConnection(user);
+		}
 	}
 }
